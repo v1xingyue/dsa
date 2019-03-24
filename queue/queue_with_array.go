@@ -42,6 +42,6 @@ func (self *XQueue) Count() int {
     if self.last > self.head {
         return self.last - self.head
     } else {
-        return self.size - (self.head - self.last) 
+        return self.size - (self.head - self.last)
     }
 }
