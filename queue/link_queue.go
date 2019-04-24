@@ -4,7 +4,7 @@ import (
 	_ "log"
 )
 
-type vtype int
+type vtype interface{}
 
 /*
 链式实现一个队列系统
@@ -54,4 +54,8 @@ func (self *linkqueue) Shift() (vtype, bool) {
 	} else {
 		return -1, false
 	}
+}
+
+func (self *linkqueue) Empty() bool {
+	return self.size == 0
 }
