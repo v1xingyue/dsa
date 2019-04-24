@@ -1,8 +1,10 @@
-package binarytree
+package queue
 
 import (
 	_ "log"
 )
+
+type vtype int
 
 /*
 链式实现一个队列系统
