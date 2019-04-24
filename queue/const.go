@@ -1,9 +1,9 @@
 package queue
 
-import(
-    "errors"
+import (
+	"errors"
 )
 
 var (
-    ErrorQueueEmpty error = errors.New("Queue is Empty")
+	ErrorQueueEmpty error = errors.New("Queue is Empty")
 )

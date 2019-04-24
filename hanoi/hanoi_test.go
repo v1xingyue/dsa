@@ -5,5 +5,5 @@ import (
 )
 
 func TestHanoi(t *testing.T) {
-	Hanoi(10, 1, 3)
+	Hanoi(7, 1, 3)
 }
