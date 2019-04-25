@@ -53,15 +53,13 @@ func LevelLoopTree(tree *node, fn LoopHandler) {
 	}
 	for !lq.Empty() {
 		root, _ := lq.Shift()
-		if root != nil {
-			_root := root.(*node)
-			fn(_root.data)
-			if _root.left != nil {
-				lq.Insert(_root.left)
-			}
-			if _root.right != nil {
-				lq.Insert(_root.right)
-			}
+		_root := root.(*node)
+		fn(_root.data)
+		if _root.left != nil {
+			lq.Insert(_root.left)
+		}
+		if _root.right != nil {
+			lq.Insert(_root.right)
 		}
 	}
 }
