@@ -47,9 +47,21 @@ func MidLoopTree(tree *node, fn LoopHandler) {
 
 //按层遍历
 func LevelLoopTree(tree *node, fn LoopHandler) {
-	queue.NewListQueue(256)
-	root := tree
-	for root != nil {
-
+	lq := queue.NewListQueue(256)
+	if tree != nil {
+		lq.Insert(tree)
+	}
+	for !lq.Empty() {
+		root, _ := lq.Shift()
+		if root != nil {
+			_root := root.(*node)
+			fn(_root.data)
+			if _root.left != nil {
+				lq.Insert(_root.left)
+			}
+			if _root.right != nil {
+				lq.Insert(_root.right)
+			}
+		}
 	}
 }
