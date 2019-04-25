@@ -1,8 +1,12 @@
 package queue
 
 import (
-	_ "log"
+	"log"
 )
+
+func _(m string) {
+	log.Println(m)
+}
 
 type vtype interface{}
 
@@ -50,6 +54,9 @@ func (self *linkqueue) Shift() (vtype, bool) {
 		v := self.head.data
 		self.head = self.head.next
 		self.size -= 1
+		if self.size == 0 {
+			self.last = nil
+		}
 		return v, true
 	} else {
 		return -1, false
