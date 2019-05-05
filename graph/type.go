@@ -45,7 +45,6 @@ func (self *Gragh) bfs(from, to int) {
 		q := queue.Back()
 		queue.Remove(q)
 		num := q.Value.(int)
-		log.Println("gragh node number out : ", num)
 
 		//遍历对应的关系节点
 		nodeList := self.edges[num]
@@ -53,20 +52,17 @@ func (self *Gragh) bfs(from, to int) {
 			node := nodeList.Back()
 			nodeList.Remove(node)
 			i := node.Value.(int)
-			log.Println("gragh node number : ", i)
-			pre[i] = num
-			log.Println("	=====   gragh pre node number : ", i, num)
 			if visited[i] {
 				continue
 			}
+			pre[i] = num
 			if i == to {
-				log.Println("found ... ---- ", to, i)
 				found = true
 				break
 			}
 			visited[i] = true
-			//把对应的子节点加入队列
-			queue.PushBackList(self.edges[i])
+			//把当前节点加入队列,不是当前节点的关系节点
+			queue.PushBack(i)
 		}
 		if found {
 			break
@@ -80,11 +76,18 @@ func (self *Gragh) bfs(from, to int) {
 //打印深度优先遍历的路径
 func printPath(path map[int]int, from, to int) {
 	log.Println(" \n --------------------  Print bfs Path  -------------- \n ")
-
-	for k, v := range path {
-		log.Println(" path route : ", k, v)
+	road := make([]int, 0)
+	for {
+		i := path[to]
+		road = append(road, i)
+		if i == from {
+			break
+		}
+		to = i
+	}
+	xlen := len(road)
+	for idx := 0; idx < xlen; idx++ {
+		log.Println(road[xlen-idx-1])
 	}
 
-	log.Println("path ---- <-  ", path[to])
-	log.Println("path ---- <-  ", path[5])
 }

@@ -39,6 +39,10 @@ func TestGraghBfs(t *testing.T) {
 	g.addEdge(2, 5)
 	g.addEdge(4, 5)
 	g.addEdge(3, 5)
-	g.addEdge(5, 10)
-	g.bfs(1, 10)
+	g.addEdge(5, 20)
+	g.addEdge(5, 1)
+	g.addEdge(2, 8)
+	g.addEdge(8, 3)
+	g.addEdge(3, 11)
+	g.bfs(1, 11)
 }
